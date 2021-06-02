@@ -1,0 +1,87 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Main
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  ci-config:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Running CI Config"
+
+  test-frontend:
+    needs: ci-config
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run Front End Tests
+        run: npm run test:frontend:ci
+
+  test-backend:
+    needs: ci-config
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run Backend Tests
+        run: npm run test:backend
+  # build-windows:
+  #   needs: test-e2e
+  #   runs-on: windows-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Use Node.js 14
+  #       uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '14'
+  #     - name: Install Dependencies
+  #       run: npm ci
+  #     - name: Build Application
+  #       env:
+  #         GH_TOKEN: ${{ secrets.GH_TOKEN }}
+  #       run: npm run electron:build
+  # build-mac:
+  #   needs: test-e2e
+  #   runs-on: macos-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Use Node.js 14
+  #       uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '14'
+  #     - name: Install Dependencies
+  #       run: npm ci
+  #     - name: Build Application
+  #       env:
+  #         GH_TOKEN: ${{ secrets.GH_TOKEN }}
+  #       run: npm run electron:build
+  # build-linux:
+  #   needs: test-e2e
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Use Node.js 14
+  #       uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '14'
+  #     - name: Install Dependencies
+  #       run: npm ci
+  #     - name: Build Application
+  #       env:
+  #         GH_TOKEN: ${{ secrets.GH_TOKEN }}
+  #       run: npm run electron:build
