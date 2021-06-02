@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: '14'
       - name: Install Dependencies
-        run: npm ci
+        run: npm install
       - name: Run Front End Tests
         run: npm run test:frontend:ci
 
@@ -37,7 +37,7 @@ jobs:
         with:
           node-version: '14'
       - name: Install Dependencies
-        run: npm ci
+        run: npm install
       - name: Run Backend Tests
         run: npm run test:backend
   # build-windows:
