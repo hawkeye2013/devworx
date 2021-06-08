@@ -16,6 +16,7 @@
     "electron:serve-tsc": "tsc -p tsconfig-serve.json",
     "electron:serve": "wait-on tcp:8080 && npx electron . --dev",
     "electron:build": "run-s vue:build electron:builder",
+    "release": "run-s vue:build electron:builder --publish=always",
     "electron:builder": "electron-builder build",
     "test:frontend:ci": "vue-cli-service test:unit frontend",
     "test:backend": "jest backend",

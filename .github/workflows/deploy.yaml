@@ -51,17 +51,13 @@ jobs:
         with:
           node-version: '14'
       - name: NPM Version Check
-        run: npm --version
-      - name: NPM Version Check
         run: npm install -g npm
-      - name: NPM Version Check
-        run: npm --version
       - name: Install Dependencies
         run: npm install
       - name: Build Application
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: npm run electron:build
+        run: npm run release
   build-mac:
     needs: [test-frontend, test-backend]
     runs-on: macos-latest
@@ -72,17 +68,13 @@ jobs:
         with:
           node-version: '14'
       - name: NPM Version Check
-        run: npm --version
-      - name: NPM Version Check
         run: npm install -g npm
-      - name: NPM Version Check
-        run: npm --version
       - name: Install Dependencies
         run: npm install
       - name: Build Application
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: npm run electron:build
+        run: npm run release
   build-linux:
     needs: [test-frontend, test-backend]
     runs-on: ubuntu-latest
@@ -93,14 +85,10 @@ jobs:
         with:
           node-version: '14'
       - name: NPM Version Check
-        run: npm --version
-      - name: NPM Version Check
         run: npm install -g npm
-      - name: NPM Version Check
-        run: npm --version
       - name: Install Dependencies
         run: npm install
       - name: Build Application
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: npm run electron:build
+        run: npm run release
