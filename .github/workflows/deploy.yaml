@@ -40,6 +40,7 @@ jobs:
         run: npm install
       - name: Run Backend Tests
         run: npm run test:backend
+
   build-windows:
     needs: [test-frontend, test-backend]
     runs-on: windows-latest
@@ -49,6 +50,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14'
+      - name: NPM Version Check
+        run: npm --version
       - name: Install Dependencies
         run: npm install
       - name: Build Application
@@ -64,6 +67,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14'
+      - name: NPM Version Check
+        run: npm --version
       - name: Install Dependencies
         run: npm install
       - name: Build Application
@@ -79,6 +84,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14'
+      - name: NPM Version Check
+        run: npm --version
       - name: Install Dependencies
         run: npm install
       - name: Build Application
