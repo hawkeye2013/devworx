@@ -52,6 +52,10 @@ jobs:
           node-version: '14'
       - name: NPM Version Check
         run: npm --version
+      - name: NPM Version Check
+        run: npm install -g npm
+      - name: NPM Version Check
+        run: npm --version
       - name: Install Dependencies
         run: npm install
       - name: Build Application
@@ -69,6 +73,10 @@ jobs:
           node-version: '14'
       - name: NPM Version Check
         run: npm --version
+      - name: NPM Version Check
+        run: npm install -g npm
+      - name: NPM Version Check
+        run: npm --version
       - name: Install Dependencies
         run: npm install
       - name: Build Application
@@ -84,6 +92,10 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14'
+      - name: NPM Version Check
+        run: npm --version
+      - name: NPM Version Check
+        run: npm install -g npm
       - name: NPM Version Check
         run: npm --version
       - name: Install Dependencies
